@@ -2,7 +2,7 @@ module.exports = robot => {
   robot.on('pull_request.opened', async context => {
     const files = await context.github.pullRequests.getFiles(context.issue())
     const docs = files.data.find(function (file) {
-      if (file.filename.startsWith('README') || file.filename.includes('docs/')) {
+      if (file.filename.startsWith('README') || file.filename.startsWith('CHANGELOG') || file.filename.includes('docs/')) {
         return file
       }
     })
